@@ -1,0 +1,34 @@
+(() => {
+  const STORE_KEY = "customCssRulesApp"; // stored on `game`
+
+  const existing = game[STORE_KEY];
+  if (existing && existing.rendered) {
+    existing.close();
+    return;
+  }
+
+  const entry = Array.from(game.settings.menus.entries()).find(([key, cfg]) =>
+    key.startsWith("custom-css") ||
+    cfg?.name === "Custom CSS Rules" ||
+    cfg?.label === "Custom CSS Rules"
+  );
+
+  if (!entry) {
+    ui.notifications.error("Custom CSS Rules menu not found. Is the Custom CSS module enabled?");
+    console.log("Available menus:", game.settings.menus);
+    return;
+  }
+
+  const menu = entry[1];
+  const AppClass = menu.type;
+
+  if (typeof AppClass !== "function") {
+    ui.notifications.error("Custom CSS Rules menu type is invalid.");
+    console.error("Custom CSS menu entry:", menu);
+    return;
+  }
+
+  const app = new AppClass();
+  game[STORE_KEY] = app;
+  app.render(true);
+})();
