@@ -1,0 +1,17 @@
+.attributeSegmentGraph {
+min-width: 100%;
+height: 10px;
+display: flex;
+flex-direction: row;
+gap: 7px;
+}
+
+.segmentParent {
+width: 15px;
+height: 10px;
+}
+
+.segmentFill {
+background-color: orange;
+height: 10px;
+}
