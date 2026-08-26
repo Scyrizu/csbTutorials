@@ -1,0 +1,261 @@
+/* ----------------------------------------- */
+/*      Variables, and Reusable Classes      */
+/* ----------------------------------------- */
+:root {
+    --darkred: rgba(139, 0, 0, 1);
+    --whiteish: rgba(239, 230, 216, 1);
+}
+
+.panelContent {
+    border: 1px solid white;
+    margin: 5px !important;
+    padding: 5px;
+}
+.panelContent > .flexcol {margin: 5px !important;}
+
+.fitContent, .fitContent > div, .fitContent .custom-system-component-contents {max-width: fit-content;}
+
+.alignLeft { justify-content: left;}
+
+.mw95, .mw95 * {min-width: 95%;}
+.titleLines {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    width: 100%;
+}
+
+.titleLines::before, .titleLines::after {
+    content: '';
+    flex: 1;
+    position: relative;
+    border: 1px solid white;
+    margin-top: -0.25rem;
+ }
+
+/* ----------------------------------------- */
+/*              Global Changes               */
+/* ----------------------------------------- */
+
+
+/* ----------------------------------------- */
+/*                Player Characters          */
+/* ----------------------------------------- */
+    form.J5Br78dLjiln1hm1.character {
+            container-type: inline-size;
+            container-name: form;
+            min-width: 575px !important;
+        /* ----------------------------------------- */
+        /*              Sheetwide                    */
+        /* ----------------------------------------- */
+        * {margin: 0;}
+
+        .window-content {padding: 0;}
+
+        .grid {gap: 0;}
+
+        .custom-system-sheet-actions {
+            position: absolute;
+            top: 0;
+            right: 0;
+            margin-right: 5px !important;
+        }
+        
+        .custom-system-template-select select {margin-right: 3rem !important;}
+        
+        /* ----------------------------------------- */
+        /*              Template Controls            */
+        /* ----------------------------------------- */
+            .editLock {
+                position: absolute;
+                top: 0.45rem;
+                right: 0;
+                margin-right: 3rem !important;
+                width: fit-content;
+            }
+
+            .editLock input:not(:checked)::before {
+                content: "\f204";
+                font-family: "Font Awesome 7 Pro";
+                color: var(--whiteish);
+                font-weight: 600;
+            }
+
+            .editLock input:checked::after {
+                content: "\f205";
+                font-family: "Font Awesome 7 Pro";
+                color: var(--whiteish);
+            }
+
+            .editLock::before {
+                content: "\f023";
+                font-family: "Font Awesome 7 Pro";
+                color: var(--whiteish);
+                font-weight: 600;
+                margin-right: 5px !important;
+            }
+        
+        /* ----------------------------------------- */
+        /*              Organize Main Panels         */
+        /* ----------------------------------------- */
+            .ab_mainBody {min-height: 100%;}
+
+            .ab_header, .ab_body {
+                overflow-y: scroll;
+                overflow-x: hidden;
+                scrollbar-width: none;
+                min-width: max(32.55%, 205.859px);
+            }
+
+            .ab_mainBody, .custom_body, .custom_body > .flexcol, .custom-system-customBody, .ab_mainBody .grid { height: 100% !important;}
+
+            /* ----------------------------------------- */
+            /*                  Header                   */
+            /* ----------------------------------------- */
+
+            .ab_header {
+                background-color: rgb(77, 8,8);
+                container-type: inline-size;
+                container-name: ab_header;
+            }
+
+            .headerTitle, .headerSubtitle {white-space: nowrap;}
+            
+            .headerTitle {font-size: 2rem;}
+
+            .headerSubtitle {
+                font-size: 0.8rem;
+                margin-bottom: 0.75rem;
+            }
+
+            .profile-img-container {
+                aspect-ratio: 1.5 / 1;
+                position: absolute;
+                top: 6.5rem;
+                left: 0;
+                min-width: max(33%, 205.859px);
+                height: auto !important;
+                justify-content: center;
+            }
+
+            .profile-img {
+                width: auto;
+                height: 100%;
+                aspect-ratio: 1 / 1;
+            }
+
+            .ghostPicture {
+                width: 100%;
+                aspect-ratio: 1.5 / 1;
+            }
+            .headerBodyTitle {
+                anchor-name: --permit;
+            }
+
+            .charname {
+                position: absolute;
+                left: 0;
+                width: max(33.3%, 205.859px);
+                top: anchor(--permit bottom);
+            }
+            .ghostName { 
+                min-height: 46px !important;
+                min-width: 100%;
+            }
+
+            .panelHeaderContent .flexcol > .flexcol {margin-bottom: 8px;}
+            .panelHeaderContent .flexcol > .flexcol .flexcol {margin-bottom: 0;}
+            /* ----------------------------------------- */
+            /*                     Body                  */
+            /* ----------------------------------------- */
+            .ab_body {
+                margin: 3rem 5px 5px 5px !important;
+            }
+
+            .levelDisplay {
+                font-size: 1.5rem;
+                padding: 0.25rem;
+            }
+
+            .levelUp {
+                justify-content: right;
+            }
+
+            .xpMeter {margin-left: 5px !important;}
+            
+            .xpMeter .custom-system-meter { 
+                border-radius: 0;
+                background-color: darkgray;
+            }
+
+            .xpMeter .custom-system-meter-fill {
+                border-radius: 0;
+                background-color: dimgray !important;
+            }
+
+            .panelAttributes .custom-system-component-contents, .panelSkills .custom-system-component-contents { min-height: 24px;}
+
+            .attributeSegmentGraph {
+                min-width: 100%;
+                height: 10px;
+                display: flex;
+                flex-direction: row;
+                gap: 7px;
+            }
+            .segmentParent {
+                width: 15px;
+                height: 10px;
+            }
+            .segmentFill {
+                background-color: orange;
+                height: 10px;
+            }
+
+            /* ----------------------------------------- */
+            /*               Dynamic CSS                 */
+            /* ----------------------------------------- */
+
+            /*break panels & change attribute borders*/
+            @container form (max-width: 920px) {
+                .ab_body .grid {
+                    grid-template-columns: 1fr;
+                }
+                .panelSkills .custom-system-component-contents .grid, .panelAttributes .custom-system-component-contents .grid {
+                    display: flex;
+                    flex-direction: row;
+                }
+                .panelAttributes {
+                    border-bottom: 1px solid white !important;
+                }
+                .panelSkills .flexcol, .panelAttributes .flexcol { 
+                        margin-bottom: 5px !important;
+                }
+                
+            }
+
+            @container form (min-width: 921px) {
+                .panelSkills {
+                    border-left: 1px solid white !important;
+                }
+                .panelStatsMain {padding: 8px;}
+                .panelSkills, .panelAttributes { 
+                    margin: 10px !important; 
+                    .flexcol:not(:last-child) {
+                        margin-bottom: 7px !important;
+                    }
+                }
+            }
+
+            /*remove header labels*/
+            @container ab_header (max-width: 245px) {
+                .titleInput label, .affiliation label {
+                    display: none;
+                }
+            }
+    }
+/* ----------------------------------------- */
+/*                 Items                     */
+/* ----------------------------------------- */
+
+
